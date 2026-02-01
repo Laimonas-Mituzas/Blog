@@ -1,17 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
+{% block post_article %}
+<!--Iterpiamas kodas dedamas cia -->
 {% for post in posts %}
-<h1>{{post.title}}</h1>
-<p>{{ post.author }} - {{ post.created }}</p>
-<p>{{ post.content }}</p>
-<p>Komentarai: {{ post.comments.count }}</p>
-{% endfor %}
+<article>
 
-</body>
-</html>
+    <div class="featured-post">
+                    <div class="featured-image"></div>
+                    <div class="p-4">
+                        <span class="blog-category">SVARBU</span>
+                        <h2 class="mt-2 mb-3">
+                            <a href="tinklarascio-irasas.html" class="text-decoration-none text-dark">
+                                {{post.title}}
+                            </a>
+                        </h2>
+                        <div class="blog-meta mb-3">
+                            <i class="bi bi-calendar3"></i> {{ post.created }}
+                            <i class="bi bi-person ms-3"></i> {{ post.author }}
+                            <i class="bi bi-eye ms-3"></i> 1,234 peržiūros
+                        </div>
+                        <p class="text-muted">
+                            {{ post.content }}
+                        </p>
+                        <p>Komentarai: {{ post.comments.count }}</p>
+                        <a href="tinklarascio-irasas.html" class="read-more">
+                            Skaityti daugiau <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+</article>
+
+{% endfor %}
+{% endblock %}
+
+
+
+<!--{% for post in posts %}-->
+<!--<h1>{{post.title}}</h1>-->
+<!--<p>{{ post.author }} - {{ post.created }}</p>-->
+<!--<p>{{ post.content }}</p>-->
+<!--<p>Komentarai: {{ post.comments.count }}</p>-->
+<!--{% endfor %}-->
+

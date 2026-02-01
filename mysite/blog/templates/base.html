@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tinklaraštis - AutoRaketa Servisas</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <style>
+        :root {
+            --primary-color: #dc3545;
+            --secondary-color: #212529;
+            --accent-color: #ffc107;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .navbar {
+            background-color: var(--secondary-color) !important;
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color) !important;
+        }
+
+        .blog-header {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%23333" width="1200" height="400"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .blog-header h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .blog-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 100%;
+            background: white;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .blog-image {
+            height: 250px;
+            object-fit: cover;
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .blog-category {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .blog-meta {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .blog-meta i {
+            margin-right: 5px;
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .read-more:hover {
+            color: #bb2d3b;
+        }
+
+        .featured-post {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 50px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .featured-image {
+            height: 400px;
+            object-fit: cover;
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .sidebar-widget {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .sidebar-widget h5 {
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 5px 15px;
+            background-color: #e9ecef;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 0.9rem;
+            color: #495057;
+            text-decoration: none;
+        }
+
+        .tag:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .recent-post-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .recent-post-item:last-child {
+            border-bottom: none;
+        }
+
+        .recent-post-item a {
+            color: #212529;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .recent-post-item a:hover {
+            color: var(--primary-color);
+        }
+
+        .pagination {
+            margin-top: 50px;
+        }
+
+        .page-link {
+            color: var(--primary-color);
+        }
+
+        .page-item.active .page-link {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 80px;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box input {
+            padding-right: 45px;
+        }
+
+        .search-box button {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="autoservisas.html">
+                <i class="bi bi-tools"></i> AutoRaketa Servisas
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="autoservisas.html">Pagrindinis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="autoservisas.html#services">Paslaugos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="autoservisas.html#prices">Kainos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="tinklarastis.html">Tinklaraštis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="autoservisas.html#contact">Kontaktai</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Header -->
+    <section class="blog-header">
+        <div class="container">
+            <h1>AutoRaketa Tinklaraštis</h1>
+            <p class="lead">Naujienos, patarimai ir automobilių priežiūros gidai</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <!-- Blog Posts Column -->
+            <div class="col-lg-8">
+
+                <!-- Featured Post -->
+                {% block post_article %}
+                {% endblock %}
+
+
+
+                <!-- Blog Posts Grid -->
+
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card blog-card shadow-sm">
+                            <div class="blog-image"></div>
+                            <div class="card-body">
+                                <span class="blog-category">PRIEŽIŪRA</span>
+                                <h5 class="card-title mt-2">
+                                    <a href="tinklarascio-irasas.html" class="text-decoration-none text-dark">
+                                        5 ženklai, kad laikas keisti stabdžių kaladėles
+                                    </a>
+                                </h5>
+                                <div class="blog-meta mb-3">
+                                    <i class="bi bi-calendar3"></i> 2026-01-25
+                                    <i class="bi bi-person ms-2"></i> Jonas Petraitis
+                                </div>
+                                <p class="card-text text-muted">
+                                    Stabdžių sistema - viena svarbiausių automobilio saugos dalių. Sužinokite, į kokius ženklus atkreipti dėmesį...
+                                </p>
+                                <a href="tinklarascio-irasas.html" class="read-more">
+                                    Skaityti daugiau <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="card blog-card shadow-sm">
+                            <div class="blog-image"></div>
+                            <div class="card-body">
+                                <span class="blog-category">NAUJIENOS</span>
+                                <h5 class="card-title mt-2">
+                                    <a href="tinklarascio-irasas.html" class="text-decoration-none text-dark">
+                                        Naujos ES emisijų normos 2026 metais
+                                    </a>
+                                </h5>
+                                <div class="blog-meta mb-3">
+                                    <i class="bi bi-calendar3"></i> 2026-01-22
+                                    <i class="bi bi-person ms-2"></i> Mindaugas Stankus
+                                </div>
+                                <p class="card-text text-muted">
+                                    Europos Sąjunga įveda naujas aplinkosaugos normas. Ką tai reiškia jūsų automobiliui?
+                                </p>
+                                <a href="tinklarascio-irasas.html" class="read-more">
+                                    Skaityti daugiau <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+                <!-- Pagination -->
+                <nav aria-label="Blog pagination">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Atgal</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Pirmyn</a>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+
+            <!-- Sidebar Column -->
+            <div class="col-lg-4">
+
+                <!-- Search Widget -->
+                <div class="sidebar-widget">
+                    <h5><i class="bi bi-search"></i> Paieška</h5>
+                    <div class="search-box">
+                        <input type="text" class="form-control" placeholder="Ieškoti straipsnių...">
+                        <button type="submit"><i class="bi bi-search"></i></button>
+                    </div>
+                </div>
+
+                <!-- Categories Widget -->
+                <div class="sidebar-widget">
+                    <h5><i class="bi bi-folder"></i> Kategorijos</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <a href="#" class="text-decoration-none text-dark">
+                                <i class="bi bi-chevron-right text-danger"></i> Priežiūra (24)
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="text-decoration-none text-dark">
+                                <i class="bi bi-chevron-right text-danger"></i> Naujienos (18)
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="text-decoration-none text-dark">
+                                <i class="bi bi-chevron-right text-danger"></i> Patarimai (32)
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="text-decoration-none text-dark">
+                                <i class="bi bi-chevron-right text-danger"></i> Technologijos (15)
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="text-decoration-none text-dark">
+                                <i class="bi bi-chevron-right text-danger"></i> Remontas (28)
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="text-decoration-none text-dark">
+                                <i class="bi bi-chevron-right text-danger"></i> Saugumas (12)
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Recent Posts Widget -->
+                <div class="sidebar-widget">
+                    <h5><i class="bi bi-clock-history"></i> Naujausi Įrašai</h5>
+                    <div class="recent-post-item">
+                        <a href="tinklarascio-irasas.html">Kaip paruošti automobilį žiemai</a>
+                        <div class="blog-meta mt-1">
+                            <i class="bi bi-calendar3"></i> 2026-01-28
+                        </div>
+                    </div>
+                    <div class="recent-post-item">
+                        <a href="tinklarascio-irasas.html">5 ženklai, kad laikas keisti stabdžių kaladėles</a>
+                        <div class="blog-meta mt-1">
+                            <i class="bi bi-calendar3"></i> 2026-01-25
+                        </div>
+                    </div>
+                    <div class="recent-post-item">
+                        <a href="tinklarascio-irasas.html">Naujos ES emisijų normos 2026 metais</a>
+                        <div class="blog-meta mt-1">
+                            <i class="bi bi-calendar3"></i> 2026-01-22
+                        </div>
+                    </div>
+                    <div class="recent-post-item">
+                        <a href="tinklarascio-irasas.html">Kaip sutaupyti degalų: 10 praktinių patarimų</a>
+                        <div class="blog-meta mt-1">
+                            <i class="bi bi-calendar3"></i> 2026-01-20
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tags Widget -->
+                <div class="sidebar-widget">
+                    <h5><i class="bi bi-tags"></i> Žymos</h5>
+                    <div>
+                        <a href="#" class="tag">Žiema</a>
+                        <a href="#" class="tag">Priežiūra</a>
+                        <a href="#" class="tag">Padangos</a>
+                        <a href="#" class="tag">Stabdžiai</a>
+                        <a href="#" class="tag">Variklis</a>
+                        <a href="#" class="tag">Diagnostika</a>
+                        <a href="#" class="tag">Elektromobiliai</a>
+                        <a href="#" class="tag">Saugumas</a>
+                        <a href="#" class="tag">Taupymas</a>
+                        <a href="#" class="tag">Remontas</a>
+                        <a href="#" class="tag">ADAS</a>
+                        <a href="#" class="tag">Emisijos</a>
+                    </div>
+                </div>
+
+                <!-- Newsletter Widget -->
+                <div class="sidebar-widget" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                    <h5 style="border-color: white;"><i class="bi bi-envelope"></i> Naujienlaiškis</h5>
+                    <p>Gaukite naujausius straipsnius į savo el. paštą!</p>
+                    <form>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Jūsų el. paštas" required>
+                        </div>
+                        <button type="submit" class="btn btn-light w-100">Prenumeruoti</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-danger">AutoRaketa Servisas</h5>
+                    <p class="text-muted">Profesionalus automobilių servisas su 18 metų patirtimi. Kokybė ir patikimumas - mūsų prioritetai.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="bi bi-facebook fs-4"></i></a>
+                        <a href="#" class="text-white me-3"><i class="bi bi-instagram fs-4"></i></a>
+                        <a href="#" class="text-white me-3"><i class="bi bi-youtube fs-4"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-linkedin fs-4"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-danger">Greitos Nuorodos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="autoservisas.html" class="text-white-50 text-decoration-none">Pagrindinis</a></li>
+                        <li><a href="autoservisas.html#services" class="text-white-50 text-decoration-none">Paslaugos</a></li>
+                        <li><a href="autoservisas.html#prices" class="text-white-50 text-decoration-none">Kainos</a></li>
+                        <li><a href="tinklarastis.html" class="text-white-50 text-decoration-none">Tinklaraštis</a></li>
+                        <li><a href="autoservisas.html#contact" class="text-white-50 text-decoration-none">Kontaktai</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-danger">Kontaktai</h5>
+                    <p class="text-muted mb-1">
+                        <i class="bi bi-geo-alt-fill"></i> Pramonės g. 15, Kaunas
+                    </p>
+                    <p class="text-muted mb-1">
+                        <i class="bi bi-telephone-fill"></i> +370 600 12345
+                    </p>
+                    <p class="text-muted">
+                        <i class="bi bi-envelope-fill"></i> info@autoraketa.lt
+                    </p>
+                </div>
+            </div>
+
+            <hr class="bg-secondary">
+
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="text-muted mb-0">&copy; 2026 AutoRaketa Servisas. Visos teisės saugomos.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
