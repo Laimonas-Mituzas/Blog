@@ -70,20 +70,30 @@
 
 
                 <!-- Pagination -->
+                {% if posts.has_other_pages %}
                 <nav aria-label="Blog pagination">
                     <ul class="pagination justify-content-center">
                         <li class="page-item disabled">
                             <a class="page-link" href="#" tabindex="-1">Atgal</a>
                         </li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                         {% for i in posts.paginator.page_range %}
+                            {% if posts.number == i %}
+                        <li class="page-item active">
+                            <a class="page-link">{{ i }}</a>
+                        </li>
+                                {% else %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                        </li>
+                                {% endif %}
+                            {% endfor %}
+
                         <li class="page-item">
                             <a class="page-link" href="#">Pirmyn</a>
                         </li>
                     </ul>
                 </nav>
+                {% endif %}
 
             </div>
 
