@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block post_article %}
+{% block content %}
 <!--Iterpiamas kodas dedamas cia -->
 {% for post in posts %}
 <article>
@@ -10,7 +10,7 @@
                     <div class="p-4">
                         <span class="blog-category">SVARBU</span>
                         <h2 class="mt-2 mb-3">
-                            <a href="tinklarascio-irasas.html" class="text-decoration-none text-dark">
+                            <a href="{% url 'post' post.pk %}" class="text-decoration-none text-dark">
                                 {{post.title}}
                             </a>
                         </h2>
@@ -19,13 +19,16 @@
                             <i class="bi bi-person ms-3"></i> {{ post.author }}
                             <i class="bi bi-eye ms-3"></i> 1,234 peržiūros
                         </div>
-                        <p class="text-muted">
-                            {{ post.content }}
-                        </p>
-                        <p>Komentarai: {{ post.comments.count }}</p>
-                        <a href="tinklarascio-irasas.html" class="read-more">
+                        <p class="text-muted short-descritpion">
+                            {{ post.content | safe | truncatewords:"30" }}
+                            <a href="{% url 'post' post.pk %}" class="read-more">
+                                <br/>
                             Skaityti daugiau <i class="bi bi-arrow-right"></i>
                         </a>
+                        </p>
+
+                        <p>Komentarai: {{ post.comments.count }}</p>
+
                     </div>
                 </div>
 

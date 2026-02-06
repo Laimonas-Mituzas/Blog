@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaip paruošti automobilį žiemai - AutoRaketa Tinklaraštis</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <style>
+        :root {
+            --primary-color: #dc3545;
+            --secondary-color: #212529;
+            --accent-color: #ffc107;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .navbar {
+            background-color: var(--secondary-color) !important;
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color) !important;
+        }
+
+        .post-header {
+            background: white;
+            padding: 60px 0 40px;
+            margin-bottom: 0;
+        }
+
+        .post-category {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .post-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .post-meta {
+            color: #6c757d;
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+
+        .post-meta i {
+            margin-right: 5px;
+        }
+
+        .post-meta .separator {
+            margin: 0 15px;
+            color: #dee2e6;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin-bottom: 40px;
+        }
+
+        .post-content {
+            background: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .post-content h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .post-content h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .post-content p {
+            margin-bottom: 20px;
+        }
+
+        .post-content ul, .post-content ol {
+            margin-bottom: 25px;
+            padding-left: 30px;
+        }
+
+        .post-content li {
+            margin-bottom: 10px;
+        }
+
+        .highlight-box {
+            background: #fff5f5;
+            border-left: 4px solid var(--primary-color);
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+
+        .highlight-box h4 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .info-box {
+            background: #e7f3ff;
+            border-left: 4px solid #0d6efd;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+
+        .author-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .author-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            margin-right: 20px;
+        }
+
+        .share-buttons {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .share-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .share-btn:hover {
+            opacity: 0.8;
+            color: white;
+        }
+
+        .share-btn.facebook {
+            background-color: #1877f2;
+        }
+
+        .share-btn.twitter {
+            background-color: #1da1f2;
+        }
+
+        .share-btn.linkedin {
+            background-color: #0077b5;
+        }
+
+        .share-btn.email {
+            background-color: #6c757d;
+        }
+
+        .related-posts {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .related-post-card {
+            transition: transform 0.3s;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .related-post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .related-post-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .sidebar-widget {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 90px;
+        }
+
+        .sidebar-widget h5 {
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 5px 15px;
+            background-color: #e9ecef;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 0.9rem;
+            color: #495057;
+            text-decoration: none;
+        }
+
+        .tag:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .toc {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .toc li {
+            margin-bottom: 8px;
+        }
+
+        .toc a {
+            color: #495057;
+            text-decoration: none;
+        }
+
+        .toc a:hover {
+            color: var(--primary-color);
+        }
+
+        .comments-section {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .comment {
+            border-bottom: 1px solid #e9ecef;
+            padding: 20px 0;
+        }
+
+        .comment:last-child {
+            border-bottom: none;
+        }
+
+        .comment-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 80px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="autoservisas.html">
+                <i class="bi bi-tools"></i> AutoRaketa Servisas
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="autoservisas.html">Pagrindinis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="autoservisas.html#services">Paslaugos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="autoservisas.html#prices">Kainos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="tinklarastis.html">Tinklaraštis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="autoservisas.html#contact">Kontaktai</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Post Header -->
+    <section class="post-header">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <span class="post-category">SVARBU</span>
+                    <h1 class="post-title">Kaip paruošti automobilį žiemai: Išsamus vadovas 2026</h1>
+                    <div class="post-meta">
+                        <i class="bi bi-person-fill"></i> Tomas Kazlauskas
+                        <span class="separator">|</span>
+                        <i class="bi bi-calendar3"></i> 2026 m. sausio 28 d.
+                        <span class="separator">|</span>
+                        <i class="bi bi-clock"></i> 8 min. skaitymo
+                        <span class="separator">|</span>
+                        <i class="bi bi-eye"></i> 1,234 peržiūros
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Image -->
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="featured-image"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <!-- Post Content -->
+            <div class="col-lg-8">
+                <article class="post-content">
+                    <!-- Table of Contents -->
+                    <div class="toc">
+                        <h4><i class="bi bi-list-ul"></i> Turinys</h4>
+                        <ul>
+                            <li><a href="#padangos">1. Žieminių padangų montavimas</a></li>
+                            <li><a href="#akumuliatorius">2. Akumuliatoriaus patikra</a></li>
+                            <li><a href="#skysciai">3. Skysčių tikrinimas ir keitimas</a></li>
+                            <li><a href="#stabdziai">4. Stabdžių sistemos apžiūra</a></li>
+                            <li><a href="#sviesos">5. Apšvietimo sistemos patikra</a></li>
+                            <li><a href="#kuras">6. Degalų sistemos paruošimas</a></li>
+                        </ul>
+                    </div>
+
+                    <p class="lead">
+                        Artėjant žiemos sezonui, labai svarbu tinkamai paruošti automobilį šalčiui ir sudėtingoms kelio sąlygoms. Šiame išsamiame vadove rasite visus būtinus patarimus ir rekomendacijas, kaip užtikrinti saugų ir patikimą automobilio darbą visą žiemą.
+                    </p>
+
+                    <div class="highlight-box">
+                        <h4><i class="bi bi-exclamation-triangle-fill"></i> Svarbu žinoti!</h4>
+                        <p>Statistika rodo, kad dauguma automobilių gedimų žiemą įvyksta dėl netinkamo paruošimo sezonui. Laiku atlikti profilaktiniai darbai gali sutaupyti daug laiko, pinigų ir išvengti pavojingų situacijų kelyje.</p>
+                    </div>
+
+                    <h2 id="padangos">1. Žieminių padangų montavimas</h2>
+
+                    <p>
+                        Žieminės padangos yra vienas svarbiausių saugaus vairavimo žiemą elementų. Lietuvoje įstatymiškai privaloma naudoti žiemines padangas nuo lapkričio 10 d. iki balandžio 1 d., kai yra žiemiškos kelio sąlygos.
+                    </p>
+
+                    <h3>Kada reikia keisti padangas?</h3>
+                    <p>
+                        Optimalus laikas žieminių padangų montavimui yra tada, kai vidutinė oro temperatūra nukrenta žemiau +7°C. Šioje temperatūroje vasarinių padangų guma pradeda kietėti ir praranda sukibimą su keliu.
+                    </p>
+
+                    <div class="info-box">
+                        <h5><i class="bi bi-info-circle-fill"></i> Profesionalus patarimas</h5>
+                        <p>Jei jūsų žieminės padangos yra senesnės nei 6 metai arba protektoriaus gylis mažesnis nei 4mm, rekomenduojame jas pakeisti naujomis. Nors minimalus leistinas gylis yra 1.6mm, žiemą saugumui rekomenduojama turėti bent 4mm.</p>
+                    </div>
+
+                    <h3>Padangų tipai</h3>
+                    <ul>
+                        <li><strong>Dygliotos padangos</strong> - puikiai tinka ledo sąlygoms ir kalnuotam regionui</li>
+                        <li><strong>Nedygliotos (frikcijos) padangos</strong> - universalus pasirinkimas miestui ir greitkeliams</li>
+                        <li><strong>Visų sezonų padangos</strong> - kompromisas, tačiau ne optimalus pasirinkimas Lietuvos klimatui</li>
+                    </ul>
+
+                    <h2 id="akumuliatorius">2. Akumuliatoriaus patikra ir priežiūra</h2>
+
+                    <p>
+                        Žiemos šaltis - didžiausias akumuliatoriaus priešas. Temperatūrai nukritus iki -20°C, akumuliatorius gali prarasti iki 50% savo talpos. Todėl labai svarbu patikrinti jo būklę prieš žiemą.
+                    </p>
+
+                    <h3>Ką reikia patikrinti?</h3>
+                    <ol>
+                        <li><strong>Įtampa</strong> - ramybės būsenoje turėtų būti 12.6-12.8V</li>
+                        <li><strong>Užvesinant</strong> - neturėtų kristi žemiau 10V</li>
+                        <li><strong>Gnybtų būklė</strong> - turi būti švarūs, be oksidacijos</li>
+                        <li><strong>Korpuso būklė</strong> - be įtrūkimų ir nutekėjimų</li>
+                        <li><strong>Tvirtinimo patikimumas</strong> - akumuliatorius neturi judėti</li>
+                    </ol>
+
+                    <div class="highlight-box">
+                        <h4><i class="bi bi-lightbulb-fill"></i> Naudinga žinoti</h4>
+                        <p>Jei jūsų akumuliatorius vyresnis nei 4-5 metai ir pradeda rodyt silpnumo ženklus (sunkus užvedimas, blankios šviesos), geriau jį pakeisti prieš žiemą, nei laukti, kol jis grius šalčiausią rytą.</p>
+                    </div>
+
+                    <h2 id="skysciai">3. Skysčių tikrinimas ir keitimas</h2>
+
+                    <p>
+                        Teisingi ir kokybiški skysčiai užtikrina optimalų automobilio veikimą žiemą. Prieš sezoną būtina patikrinti ir prireikus pakeisti keletą svarbių skysčių.
+                    </p>
+
+                    <h3>Variklio aušinimo skystis (antifrizas)</h3>
+                    <p>
+                        Antifrizas turi atitikti gamintojo reikalavimus ir išlaikyti savybes iki -35°C arba žemiau. Patikrinkite:
+                    </p>
+                    <ul>
+                        <li>Skysčio lygį išsiplėtimo bakelyje</li>
+                        <li>Spalvą (neturėtų būti rudas ar drumzlinas)</li>
+                        <li>Įšalimo temperatūrą (galima patikrinti areometru)</li>
+                    </ul>
+
+                    <h3>Stiklų plovimo skystis</h3>
+                    <p>
+                        Niekada nenaudokite vandens! Žiemą būtinas specialus stiklų plovimo skystis, atlaikantis šaltį iki -20°C ar -30°C. Užpildykite iki galo - žiemą skysčio sunaudojama daug daugiau.
+                    </p>
+
+                    <h3>Variklio alyva</h3>
+                    <p>
+                        Jei artėja alyvos keitimo laikas, geriau tai padaryti prieš žiemą. Žiemą rekomenduojama naudoti mažesnės klampos alyvą (pvz., 5W-30 vietoj 10W-40), kuri užtikrina geresnį variklio pasileidimą šaltyje.
+                    </p>
+
+                    <h2 id="stabdziai">4. Stabdžių sistemos apžiūra</h2>
+
+                    <p>
+                        Žiemą sustojimo kelias pailgėja, todėl stabdžių sistema turi būti nepriekaištingos būklės. Rekomenduojame patikrinti:
+                    </p>
+
+                    <ul>
+                        <li><strong>Stabdžių kaladėles/trinkelius</strong> - likutinio storio turėtų būti bent 3-4mm</li>
+                        <li><strong>Stabdžių diskus/būgnus</strong> - be gilių įbrėžimų ir deformacijų</li>
+                        <li><strong>Stabdžių skysčio lygį</strong> - turėtų būti tarp MIN ir MAX žymų</li>
+                        <li><strong>Stabdžių žarnas</strong> - be plyšių ir nutekėjimų</li>
+                    </ul>
+
+                    <div class="info-box">
+                        <h5><i class="bi bi-shield-check"></i> Saugumas pirmoje vietoje</h5>
+                        <p>ABS sistema žiemą yra gyvybiškai svarbi. Jei pastebite jos gedimo indikatorių prietaisų skydelyje, nedelsiant kreipkitės į servisą. Neveikianti ABS sistema žiemą - rimta saugumo problema.</p>
+                    </div>
+
+                    <h2 id="sviesos">5. Apšvietimo sistemos patikra</h2>
+
+                    <p>
+                        Žiemą dienos trumpesnės, o matomumas dažnai prastas. Visi žibintai turi veikti nepriekaištingai:
+                    </p>
+
+                    <h3>Ką patikrinti?</h3>
+                    <ul>
+                        <li>Priekines ir galines žibintų lemputes</li>
+                        <li>Posūkių signalus</li>
+                        <li>Stabdžių žibintus</li>
+                        <li>Rūko žibintus (jei įrengti)</li>
+                        <li>Numerio apšvietimą</li>
+                        <li>Salono apšvietimą</li>
+                    </ul>
+
+                    <p>
+                        Taip pat svarbu išvalyti žibintų stiklus iš vidaus ir išorės bei patikrinti jų reguliavimą. Teisingai sureguliuoti žibintai gerina matomumą ir neakina priešpriešais važiuojančių vairuotojų.
+                    </p>
+
+                    <h2 id="kuras">6. Degalų sistemos paruošimas</h2>
+
+                    <p>
+                        Žiemą rekomenduojama degalų baką laikyti bent pusiau pilną. Tai padeda išvengti kondensato susidarymą bake ir užtikrina, kad turėsite pakankamai degalų avarinėje situacijoje.
+                    </p>
+
+                    <h3>Dyzelinio kuro ypatumai</h3>
+                    <p>
+                        Jei turite dyzelinį automobilį, būtinai naudokite žieminį dyzeliną, kuris neįšąla iki -20°C ar -32°C. Taip pat galite naudoti specialias priedus, kurie pagerina kuro savybes šaltyje.
+                    </p>
+
+                    <div class="highlight-box">
+                        <h4><i class="bi bi-thermometer-snow"></i> Ekstremalaus šalčio patarimas</h4>
+                        <p>Jei temperatūra nukrenta žemiau -25°C ir jūsų automobilis stovi lauke, galite naudoti variklio pašildytuvą arba specialią antklodę. Tai palengvins užvedimą ir sumažins variklio nusidėvėjimą.</p>
+                    </div>
+
+                    <h2>Papildomi patarimai žiemos sezonui</h2>
+
+                    <h3>Automobilio salonas</h3>
+                    <ul>
+                        <li>Įsigykite kokybiškus guminius kilimėlius, kurie sulaikys vandenį ir purslus</li>
+                        <li>Patikrinkite šildytuvo ir oro kondicionieriaus veikimą</li>
+                        <li>Įsitikinkite, kad stiklų apledinimo funkcija veikia tinkamai</li>
+                        <li>Turėkite šepetį sniegui nuvalyti ir ledo grandiklį</li>
+                    </ul>
+
+                    <h3>Avarinė įranga</h3>
+                    <p>Žiemą automobile turėtumėte turėti:</p>
+                    <ul>
+                        <li>Užvedimo kabelius</li>
+                        <li>Lopetą sniegui</li>
+                        <li>Šiltą antklodę</li>
+                        <li>Žibintuvėlį su atsarginėmis baterijomis</li>
+                        <li>Pirmosios pagalbos vaistinėlę</li>
+                        <li>Įspėjamąjį trikampį</li>
+                        <li>Atšvaitus liemenę</li>
+                    </ul>
+
+                    <h2>Išvados</h2>
+
+                    <p>
+                        Tinkamas automobilio paruošimas žiemai - tai investicija į saugumą ir ramybę. Nors kai kurie darbai gali atrodyti smulkūs, jų suma užtikrina, kad jūsų automobilis bus patikimas ir saugus visą žiemos sezoną.
+                    </p>
+
+                    <p>
+                        Jei neturite laiko ar galimybių atlikti visų šių patikrinimų savarankiškai, mūsų AutoRaketa Servisas specialistai mielai jums padės. Siūlome kompleksinę automobilio paruošimo žiemai paslaugą, kuri apima visus būtinus patikrinimus ir darbus.
+                    </p>
+
+                    <div class="highlight-box">
+                        <h4><i class="bi bi-calendar-check"></i> Užsiregistruokite dabar!</h4>
+                        <p>Susisiekite su mumis telefonu +370 600 12345 arba el. paštu info@autoraketa.lt ir užsiregistruokite automobilio paruošimui žiemai. Mūsų specialistai pasirūpins visu techniniu automobilių priežiūros sąrašu!</p>
+                    </div>
+                </article>
+
+                <!-- Tags -->
+                <div class="mb-4">
+                    <h5 class="mb-3"><i class="bi bi-tags-fill"></i> Žymos:</h5>
+                    <a href="#" class="tag">Žiema</a>
+                    <a href="#" class="tag">Priežiūra</a>
+                    <a href="#" class="tag">Padangos</a>
+                    <a href="#" class="tag">Akumuliatorius</a>
+                    <a href="#" class="tag">Saugumas</a>
+                    <a href="#" class="tag">Patarimai</a>
+                </div>
+
+                <!-- Share Buttons -->
+                <div class="share-buttons">
+                    <h5 class="mb-3"><i class="bi bi-share-fill"></i> Pasidalinkite:</h5>
+                    <a href="#" class="share-btn facebook">
+                        <i class="bi bi-facebook"></i> Facebook
+                    </a>
+                    <a href="#" class="share-btn twitter">
+                        <i class="bi bi-twitter"></i> Twitter
+                    </a>
+                    <a href="#" class="share-btn linkedin">
+                        <i class="bi bi-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="#" class="share-btn email">
+                        <i class="bi bi-envelope"></i> El. paštas
+                    </a>
+                </div>
+
+                <!-- Author Box -->
+                <div class="author-box">
+                    <div class="d-flex align-items-center">
+                        <div class="author-avatar">TK</div>
+                        <div>
+                            <h5 class="mb-1">Tomas Kazlauskas</h5>
+                            <p class="text-muted mb-2">Vyriausiasis mechanikas</p>
+                            <p class="mb-0">Automobilių servisų srityje dirbu jau 15 metų. Specializuojuosi variklio diagnostikoje ir remontuose. Mėgstu dalintis žiniomis ir padėti žmonėms geriau suprasti savo automobilių priežiūrą.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Posts -->
+                <div class="related-posts">
+                    <h4 class="mb-4"><i class="bi bi-bookmark-fill"></i> Susiję Straipsniai</h4>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <div class="card related-post-card">
+                                <div class="related-post-image"></div>
+                                <div class="card-body">
+                                    <h6>
+                                        <a href="#" class="text-decoration-none text-dark">
+                                            5 ženklai, kad laikas keisti stabdžių kaladėles
+                                        </a>
+                                    </h6>
+                                    <small class="text-muted">2026-01-25</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card related-post-card">
+                                <div class="related-post-image"></div>
+                                <div class="card-body">
+                                    <h6>
+                                        <a href="#" class="text-decoration-none text-dark">
+                                            Variklio alyvos keitimas: Kada ir kaip dažnai?
+                                        </a>
+                                    </h6>
+                                    <small class="text-muted">2026-01-15</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card related-post-card">
+                                <div class="related-post-image"></div>
+                                <div class="card-body">
+                                    <h6>
+                                        <a href="#" class="text-decoration-none text-dark">
+                                            Kaip sutaupyti degalų: 10 praktinių patarimų
+                                        </a>
+                                    </h6>
+                                    <small class="text-muted">2026-01-20</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comments Section -->
+                <div class="comments-section">
+                    <h4 class="mb-4"><i class="bi bi-chat-dots-fill"></i> Komentarai (3)</h4>
+
+                    <div class="comment">
+                        <div class="d-flex">
+                            <div class="comment-avatar me-3">JP</div>
+                            <div class="flex-grow-1">
+                                <h6>Jonas Petrauskas</h6>
+                                <small class="text-muted">2026-01-29, 10:30</small>
+                                <p class="mt-2">Puikus straipsnis! Labai informatyvus ir naudingas. Ypač patiko patarimai apie akumuliatoriaus priežiūrą. Tikrai pasinaudosiu šiais patarimais ruošdamas automobilį kitai žiemai.</p>
+                                <a href="#" class="text-decoration-none"><small><i class="bi bi-reply-fill"></i> Atsakyti</small></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="comment">
+                        <div class="d-flex">
+                            <div class="comment-avatar me-3">LK</div>
+                            <div class="flex-grow-1">
+                                <h6>Laura Kazlauskienė</h6>
+                                <small class="text-muted">2026-01-29, 14:15</small>
+                                <p class="mt-2">Geras priminimai! Aš visada keičiu padangas per vėlai. Šiais metais stengiuosi tai padaryti anksčiau. Ačiū už naudingą informaciją!</p>
+                                <a href="#" class="text-decoration-none"><small><i class="bi bi-reply-fill"></i> Atsakyti</small></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="comment">
+                        <div class="d-flex">
+                            <div class="comment-avatar me-3">MJ</div>
+                            <div class="flex-grow-1">
+                                <h6>Marius Jankauskas</h6>
+                                <small class="text-muted">2026-01-30, 09:45</small>
+                                <p class="mt-2">Ar galėtumėte parašyti straipsnį apie tai, kaip teisingai saugoti padangas vasarą? Būtų labai įdomu!</p>
+                                <a href="#" class="text-decoration-none"><small><i class="bi bi-reply-fill"></i> Atsakyti</small></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comment Form -->
+                    <div class="mt-4">
+                        <h5 class="mb-3">Palikite komentarą</h5>
+                        <form>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Vardas *" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" class="form-control" placeholder="El. paštas *" required>
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" rows="4" placeholder="Jūsų komentaras *" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-send-fill"></i> Siųsti Komentarą
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="sidebar-widget">
+                    <h5><i class="bi bi-newspaper"></i> Naujausi Straipsniai</h5>
+                    <div class="mb-3">
+                        <a href="#" class="text-decoration-none text-dark d-block mb-2">
+                            <strong>5 ženklai, kad laikas keisti stabdžių kaladėles</strong>
+                        </a>
+                        <small class="text-muted"><i class="bi bi-calendar3"></i> 2026-01-25</small>
+                    </div>
+                    <hr>
+                    <div class="mb-3">
+                        <a href="#" class="text-decoration-none text-dark d-block mb-2">
+                            <strong>Naujos ES emisijų normos 2026 metais</strong>
+                        </a>
+                        <small class="text-muted"><i class="bi bi-calendar3"></i> 2026-01-22</small>
+                    </div>
+                    <hr>
+                    <div class="mb-3">
+                        <a href="#" class="text-decoration-none text-dark d-block mb-2">
+                            <strong>Kaip sutaupyti degalų: 10 praktinių patarimų</strong>
+                        </a>
+                        <small class="text-muted"><i class="bi bi-calendar3"></i> 2026-01-20</small>
+                    </div>
+                    <hr>
+                    <div>
+                        <a href="tinklarastis.html" class="btn btn-outline-danger btn-sm w-100">
+                            Visi Straipsniai <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-danger">AutoRaketa Servisas</h5>
+                    <p class="text-muted">Profesionalus automobilių servisas su 18 metų patirtimi. Kokybė ir patikimumas - mūsų prioritetai.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="bi bi-facebook fs-4"></i></a>
+                        <a href="#" class="text-white me-3"><i class="bi bi-instagram fs-4"></i></a>
+                        <a href="#" class="text-white me-3"><i class="bi bi-youtube fs-4"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-linkedin fs-4"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-danger">Greitos Nuorodos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="autoservisas.html" class="text-white-50 text-decoration-none">Pagrindinis</a></li>
+                        <li><a href="autoservisas.html#services" class="text-white-50 text-decoration-none">Paslaugos</a></li>
+                        <li><a href="autoservisas.html#prices" class="text-white-50 text-decoration-none">Kainos</a></li>
+                        <li><a href="tinklarastis.html" class="text-white-50 text-decoration-none">Tinklaraštis</a></li>
+                        <li><a href="autoservisas.html#contact" class="text-white-50 text-decoration-none">Kontaktai</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-danger">Kontaktai</h5>
+                    <p class="text-muted mb-1">
+                        <i class="bi bi-geo-alt-fill"></i> Pramonės g. 15, Kaunas
+                    </p>
+                    <p class="text-muted mb-1">
+                        <i class="bi bi-telephone-fill"></i> +370 600 12345
+                    </p>
+                    <p class="text-muted">
+                        <i class="bi bi-envelope-fill"></i> info@autoraketa.lt
+                    </p>
+                </div>
+            </div>
+
+            <hr class="bg-secondary">
+
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="text-muted mb-0">&copy; 2026 AutoRaketa Servisas. Visos teisės saugomos.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Smooth scrolling for TOC
+        document.querySelectorAll('.toc a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

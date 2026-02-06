@@ -1,11 +1,12 @@
 from django.contrib.auth.models import User
 from django.db import models
+from tinymce.models import HTMLField
 
 # Create your models here.
 
 class Post(models.Model):
     title = models.CharField()
-    content = models.TextField()
+    content = HTMLField(verbose_name="Description", max_length=5000, default="")
     author = models.ForeignKey(to=User, on_delete=models.CASCADE, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
