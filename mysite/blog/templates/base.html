@@ -103,11 +103,13 @@
                 <!-- Search Widget -->
                 <div class="sidebar-widget">
                     <h5><i class="bi bi-search"></i> Paieška</h5>
-                    <div class="search-box">
-                        <input type="text" class="form-control" placeholder="Ieškoti straipsnių...">
+                    <form class="search-box" method="GET" action="{% url 'search' %}">
+                        <input type="text" name="query" class="form-control" placeholder="Ieškoti straipsnių...">
                         <button type="submit"><i class="bi bi-search"></i></button>
-                    </div>
+                    </form>
                 </div>
+
+
 
                 <!-- Categories Widget -->
                 <div class="sidebar-widget">
