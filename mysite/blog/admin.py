@@ -13,7 +13,7 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ['title', 'content', 'author__usename']
 
     fieldsets = [
-        ('Irasas ', {'fields': ('title', 'content', 'author', 'created')}),
+        ('Irasas ', {'fields': ('title', 'content', 'author', 'created', 'cover')}),
     ]
 
 # Register your models here.

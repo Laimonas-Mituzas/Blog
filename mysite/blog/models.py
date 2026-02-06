@@ -9,6 +9,7 @@ class Post(models.Model):
     content = HTMLField(verbose_name="Description", max_length=5000, default="")
     author = models.ForeignKey(to=User, on_delete=models.CASCADE, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
+    cover = models.ImageField('Viršelis', upload_to='covers', null=True, blank=True)
 
     def __str__(self):
         return self.title

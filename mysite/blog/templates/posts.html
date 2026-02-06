@@ -1,12 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-<!--Iterpiamas kodas dedamas cia -->
+{% load static %}
+
 {% for post in posts %}
 <article>
 
     <div class="featured-post">
-                    <div class="featured-image"></div>
+                    <div class="featured-image">
+                        {% if post.cover %}
+            <img src="{{ post.cover.url }}" class="card-img-top" alt="...">
+            {% else %}
+            <img src="{% static 'img/no-image.png' %}" class="card-img-top">
+            {% endif %}
+
+                    </div>
                     <div class="p-4">
                         <span class="blog-category">SVARBU</span>
                         <h2 class="mt-2 mb-3">
