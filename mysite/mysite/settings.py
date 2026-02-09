@@ -1,5 +1,9 @@
 from pathlib import Path
-from .my_settings import SECRET_KEY, DEBUG, ALLOWED_HOSTS
+from .my_settings import (SECRET_KEY,
+                          DEBUG,
+                          ALLOWED_HOSTS,
+                          EMAIL_HOST_USER,
+                          EMAIL_HOST_PASSWORD)
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,6 +27,8 @@ ALLOWED_HOSTS = ALLOWED_HOSTS
 INSTALLED_APPS = [
     'blog',
     'tinymce',
+    'crispy_forms',
+    'crispy_bootstrap5',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -143,3 +149,16 @@ TINYMCE_DEFAULT_CONFIG = {
 MEDIA_ROOT = os.path.join(BASE_DIR, 'blog/media')
 
 MEDIA_URL = '/media/'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD

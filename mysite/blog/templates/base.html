@@ -16,36 +16,7 @@
 </head>
 <body>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="{% url 'posts' %}">
-                <i class="bi bi-tools"></i> AutoRaketa Servisas
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="autoservisas.html">Pagrindinis</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="autoservisas.html#services">Paslaugos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="autoservisas.html#prices">Kainos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'posts' %}">Tinklaraštis</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="autoservisas.html#contact">Kontaktai</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+{% include "navbar.html" %}
 
     <!-- Blog Header -->
     <section class="blog-header">
