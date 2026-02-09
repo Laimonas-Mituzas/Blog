@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Mano irasai{% endblock %}
+
+{% block content %}
+<h1>Mano irasai "{{ query }}":</h1>
+<br>
+
+{% for post in posts %}
+<p><a href="{% url 'post' post.pk %}">{{ post }}</a></p>
+{% empty %}
+<p>Oops. Nieko neradome.</p>
+{% endfor %}
+
+
+{% endblock %}

@@ -4,6 +4,7 @@ from .models import Post
 from django.core.paginator import Paginator
 import jinja_filters
 from django.db.models import Q
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # Create your views here.
@@ -34,4 +35,10 @@ def search(request):
     }
     return render(request, template_name="search.html", context=context)
 
+class UserPostListView(LoginRequiredMixin, generic.ListView):
+    model = Post
+    template_name = 'userposts.html'
+    context_object_name = 'posts'
 
+    def get_queryset(self):
+        return Post.objects.filter(author=self.request.user)
