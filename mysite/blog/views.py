@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
-from .models import Post
+from .models import Post, Comment
 from django.core.paginator import Paginator
 import jinja_filters
 from django.db.models import Q
@@ -42,3 +42,11 @@ class UserPostListView(LoginRequiredMixin, generic.ListView):
 
     def get_queryset(self):
         return Post.objects.filter(author=self.request.user)
+
+class UserCommentListView(LoginRequiredMixin, generic.ListView):
+    model = Comment
+    template_name = 'usercomments.html'
+    context_object_name = 'comments'
+
+    def get_queryset(self):
+        return Comment.objects.filter(author=self.request.user)

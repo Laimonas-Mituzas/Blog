@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Mano komentarai{% endblock %}
+
+{% block content %}
+<h1>Mano irasai "{{ query }}":</h1>
+<br>
+
+{% for comment in comments %}
+<p>Komentaras: <a href="">{{ comment.content }}</a><br>
+    {{ comment.created }}
+</p>
+
+<p>Irasas <a href="{% url 'post' comment.post.pk %}">{{ comment.post.title }} </a></p>
+<hr>
+{% empty %}
+<p>Oops. Nieko neradome.</p>
+{% endfor %}
+
+
+{% endblock %}
